@@ -82,7 +82,7 @@ class SnakeGameAI:
                 reward += -2
         # 檢查是否超過 50 步未吃到食物
         if self.steps_without_food >= self.steps_limit:
-            return self._get_state(), -150, True, self.score  # 大懲罰並結束遊戲
+            return self._get_state(), -100, True, self.score  # 大懲罰並結束遊戲
 
         # 撞牆或撞到自己
         if self._is_collision(head):
@@ -105,8 +105,11 @@ class SnakeGameAI:
     def _get_state(self):
         head = self.snake[0]
 
-        dx_food = (self.food[0] - head[0]) // self.block_size  # x 轴相对位置
-        dy_food = (self.food[1] - head[1]) // self.block_size  # y 轴相对位置
+
+        dx_food = 0 if self.food[0] == head[0] else (1 if self.food[0] > head[0] else -1)   # x 轴相对位置
+        dy_food = 0 if self.food[1] == head[1] else (1 if self.food[1] > head[1] else -1)   # y 轴相对位置
+        # dx_food = (self.food[0] - head[0]) // self.block_size  # x 轴相对位置
+        # dy_food = (self.food[1] - head[1]) // self.block_size  # y 轴相对位置
 
         dx_direction = self.direction[0] // self.block_size
         dy_direction = self.direction[1] // self.block_size

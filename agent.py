@@ -7,7 +7,7 @@ from model import LinearQNet
 # epsilon 突變率
 # epsilon_decay 逐步降低突變率
 class DQNAgent:
-    def __init__(self, state_size, action_size, hidden_size=128, gamma=0.9, epsilon=0.95, epsilon_decay=0.99):
+    def __init__(self, state_size, action_size, hidden_size=256, gamma=0.9, epsilon=0.95, epsilon_decay=0.95):
         self.model = LinearQNet(state_size, hidden_size, action_size)
         self.optimizer = optim.Adam(self.model.parameters(), lr=0.001)
         self.gamma = gamma
@@ -16,6 +16,8 @@ class DQNAgent:
         self.last_action = None
 
     def select_action(self, state):
+        # if random.random() < self.epsilon:
+        #     return random.randint(0, 3)
         if random.random() < self.epsilon:
             available_actions = [0, 1, 2, 3]
             if self.last_action is not None:
