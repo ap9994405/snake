@@ -8,7 +8,6 @@ class SnakeGameAI:
         self.width = width
         self.height = height
         self.block_size = block_size
-        self.block_size = block_size
         self.steps_limit = 500
         self.steps_without_food = 0
         self.prev_direction = None
