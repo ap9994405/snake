@@ -6,7 +6,7 @@ from model import LinearQNet
 def play():
     # 初始化遊戲和模型
     game = SnakeGameAI()
-    model = LinearQNet(input_size=10, hidden_size=128, output_size=4)
+    model = LinearQNet(input_size=10, hidden_size=256, output_size=4)
     model.load_state_dict(torch.load("snake_ai_model.pth"))
     model.eval()  # 設置為推理模式
 

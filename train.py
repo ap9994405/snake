@@ -8,7 +8,7 @@ def train():
     Max_score = 0
     game = SnakeGameAI()
     agent = DQNAgent(state_size=10, action_size=4)
-    episodes = 500
+    episodes = 1000
 
     start_time = time.time()
     
